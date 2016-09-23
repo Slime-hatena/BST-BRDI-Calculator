@@ -110,7 +110,7 @@ $pattern4 = '/<div class="total_score">' . $query_1[0][1] . '<\/div> /um';
 preg_match_all($pattern4, $html, $query_p, PREG_SET_ORDER);
 
 
- // ((H5-I5)*2*((51-J5)/50))*10
+// ((H5-I5)*2*((51-J5)/50))*10
 
 $brdi50 = (($query_1[0][1] - $query_50[0][1] ) * 2 * ((51 - count($query_p) ) / 50 )) * 10 / 1000;
 $brdi100 = (($query_1[0][1] - $query_100[0][1] ) * 2 * ((101 - count($query_p) ) / 100 )) * 10 / 2000;
@@ -181,15 +181,14 @@ $key. "(N)" =>[
 ]
 ];
 }   //end if
-
-
-
 }   //end foreach
 
 var_dump($musicScoreList);
 
+$musicScoreList += ["time"=> time()];
+
 // jsonに保存していつでも取り出せるようにしておく
 $json = json_encode( $musicScoreList , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-$filename = 'json/' . time() . ".json";
+$filename = 'json/music.json';
 file_put_contents($filename, $json);

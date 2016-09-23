@@ -45,29 +45,26 @@ print<<<EOF
 です。</p>
 
 <p>何かあれば<a href="https://twitter.com/Slime_hatena" target="_blank">@Slime_hatena</a>へどうぞ。FF外でもDM送信できます。<br>
- グラフの一番上を押すとソートできます。</p>
+グラフの一番上を押すとソートできます。</p>
 </div>
 EOF;
 
 // 一番新しいファイルを取得する
-$fileList = [];
-if ($dir = opendir("json/")) {
-    while (($file = readdir($dir)) !== false) {
-        if ($file != "." && $file != "..") {
-            $fileList += array_merge($fileList, [$file]);
-        }
-    }
-    closedir($dir);
-}
-$array = json_decode(file_get_contents("json/" . $fileList[count($fileList) - 1]), true);
+
+
+
+$array = json_decode(file_get_contents("json/music.json"), true);
+
+$fileTime = $array['time'];
+
+// brdi-50でソート
 foreach ($array as $key => $value) {
     $sort[$key] = $value['BRDI-50'];
 }
-
 array_multisort($sort, SORT_DESC, $array);
 
 
-echo "<h2>集計結果</h2><p>最終更新 : " . date('Y/m/d H:i:s', str_replace(".json", "" , $fileList[count($fileList) - 1]))  .  "</p>";
+echo "<h2>集計結果</h2><p>最終更新 : " . date('Y/m/d H:i:s', $fileTime)  .  "</p>";
 
 echo '
 <table class="tableSorter">
