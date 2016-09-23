@@ -49,12 +49,7 @@ print<<<EOF
 </div>
 EOF;
 
-// 一番新しいファイルを取得する
-
-
-
 $array = json_decode(file_get_contents("json/music.json"), true);
-
 $fileTime = $array['time'];
 
 // brdi-50でソート
@@ -91,27 +86,7 @@ foreach ($array as $key => $value) {
     echo '<td>' . $value['fifty_score'] . '</td>';
     echo '<td>' . $value['hundred_score'] . '</td>';
     echo '<td>' . $value['perfect'] . '</td>';
-    
 }
-
-
-
-/*
-
-
-
-<td>内容がはいります。</td>
-<td>内容がはいります。</td>
-<td>内容がはいります。</td>
-<td>内容がはいります。</td>
-<td>内容がはいります。</td>
-<td>内容がはいります。</td>
-</tr>
-
-
-*/
-
-
 
 print<<<EOF
 </tr>
@@ -130,7 +105,7 @@ if ($then < $now) {
     echo $then;
 }
 echo ' Slime_hatena All Rights Reserved.<br>
-ソース的なお話は<a href="" target="_blank">githubへ';
+ソース的なお話は<a href="https://github.com/Slime-hatena/BST-BRDI-Calculator" target="_blank">github</a>へ';
 
 
 print<<<EOF
